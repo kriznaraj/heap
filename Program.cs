@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace heap
 {
@@ -6,16 +7,34 @@ namespace heap
     {
         static void Main(string[] args)
         {
-            var heapUtil = new HeapUtil(new int[] {5,9,8,1,2,3,7,6});
-            var heap = heapUtil.GetHeap();
+            var heapUtil = new HeapUtil<int>(new int[] {5,9,8,1,2,3,7,6});
+            heapUtil.Add(10);
 
-            foreach (var item in heap)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine("Heap");
+            var heap = heapUtil.GetHeap();
+            Print(heap);
+            Console.WriteLine("Sorted");
+
+            var sorted = heapUtil.Sort();
+            Print(sorted);
+
+
+
+
+
+
+            
 
 
             //Console.ReadKey();
+        }
+
+        static void Print(IList<int> items)
+        {
+            foreach (var item in items)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
